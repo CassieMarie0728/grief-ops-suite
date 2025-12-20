@@ -12,9 +12,9 @@
     "test": "echo \"(placeholder) add tests\""
   },
   "dependencies": {
-    "expo": "~50.0.0",
+    "expo": "~54.0.30",
     "react": "18.2.0",
-    "react-native": "0.73.0"
+    "react-native": "0.73.11"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
