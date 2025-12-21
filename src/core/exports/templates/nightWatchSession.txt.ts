@@ -1,0 +1,1 @@
+// nightWatchSession template placeholder

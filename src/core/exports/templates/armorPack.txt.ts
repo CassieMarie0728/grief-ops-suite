@@ -1,0 +1,1 @@
+// armorPack template placeholder

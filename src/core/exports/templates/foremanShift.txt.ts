@@ -1,0 +1,1 @@
+// foremanShift template placeholder
