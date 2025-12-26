@@ -1,0 +1,40 @@
+changelog:
+  exclude:
+    labels:
+      - "ignore-release-notes"
+      - "internal"
+    authors:
+      - "dependabot"
+  categories:
+    - title: "🚀 New Features"
+      labels:
+        - "feature"
+        - "enhancement"
+
+    - title: "🛠 Improvements"
+      labels:
+        - "improvement"
+        - "refactor"
+
+    - title: "🐞 Fixes"
+      labels:
+        - "bug"
+        - "fix"
+
+    - title: "📈 Performance & Stability"
+      labels:
+        - "performance"
+        - "stability"
+
+    - title: "🧹 Chores"
+      labels:
+        - "chore"
+        - "deps"
+
+    - title: "🧾 Docs"
+      labels:
+        - "docs"
+
+    - title: "🧪 Tests"
+      labels:
+        - "tests"

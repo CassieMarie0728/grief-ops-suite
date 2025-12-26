@@ -1,0 +1,32 @@
+name: Sync AutoChangelog (on Release)
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: autochangelog-sync
+  cancel-in-progress: true
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger AutoChangelog webhook
+        env:
+          WEBHOOK_SECRET: ${{ secrets.AUTOCHANGELOG_WEBHOOK_SECRET }}
+        run: |
+          # If AutoChangelog supports a specific version/tag, include it.
+          # If it DOESN'T, it will safely ignore extra fields.
+          TAG="${{ github.event.release.tag_name }}"
+          BODY=$(jq -n --arg tag "$TAG" '{bump:"patch", tag:$tag}')
+          SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
+
+          curl -sS -X POST "https://autochangelog.com/api/v1/hooks/ab60c71e-22e4-4bef-848c-a02b438252fe" \
+            -H "Content-Type: application/json" \
+            -H "X-Webhook-Signature: sha256=$SIGNATURE" \
+            -d "$BODY"
